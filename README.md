@@ -2,62 +2,7 @@
 
 A mobile app dedicated to reviewing news articles for misinformation using Claude AI. Built with Expo, TypeScript, and Python.
 
-## Tech Stack
 
-**Backend**
-* Python — core runtime
-* FastAPI + Uvicorn — REST API server
-* Anthropic SDK — Claude API integration for credibility scoring
-* NewsAPI — article discovery and fetching
-* newspaper3k + httpx — article scraping and text extraction
-
-**Frontend**
-* React Native (Expo SDK 54) — mobile application
-* React Navigation — screen routing
-* react-native-svg — score visualizations
-
-## Architecture
-
-### **Agent Implementation**
-
-**Processing Flow:**
-1. Content Fetching - Fetches multiple articles based on the inputted keyword(s).
-2. Content Extraction - Scrape text from each article.
-3. AI Analysis - Sends the extracted data to Claude for structured analysis and scoring.
-4. Ranking - Article scores are sorted from highest (credible) to lowest (least credible).
-
-**Model Configuration:**
-* Model: `claude-sonnet-4-6`
-* Max Tokens Per Article: 800
-
-## Scoring
-
-Articles are scored based off of 7 factors and their respective weighting: <br>
-1. Evidence Quality:     (22%)
-2. Verifiability:        (18%)
-3. Factual Language:     (15%)
-4. Logical Consistency:  (15%)
-5. Context and Framing:  (15%)
-6. Balance:              (10%)
-7. Source Reputation:    (5%)
-
-## Project Structure
-
-```
-backend/
-├── fetch_articles.py          # Article fetch
-├── main.py                    # Main testpoint
-├── pipeline.py                # Main pipeline
-├── scorer.py                  # AI scorer
-├── scraper.py                 # Article scraper
-frontend/
-├── app/                       # Application screens
-├── components/                # Reusable UI components
-├── constants/                 # App-wide constants
-├── hooks/                     # Custom React hooks
-├── types/                     # TypeScript type definitions
-└── App.tsx                    # Main application entry point
-```
 
 ## Getting Started
 
@@ -144,6 +89,35 @@ frontend/
 * Claude Specific:
     * Claude may not have the most up-to-date information to cross-reference facts in articles.
     * AI in general is not always the most trustworthy :( 
+
+
+
+### **Agent Implementation**
+
+**Processing Flow:**
+1. Content Fetching - Fetches multiple articles based on the inputted keyword(s).
+2. Content Extraction - Scrape text from each article.
+3. AI Analysis - Sends the extracted data to Claude for structured analysis and scoring.
+4. Ranking - Article scores are sorted from highest (credible) to lowest (least credible).
+
+**Model Configuration:**
+* Model: `claude-sonnet-4-6`
+* Max Tokens Per Article: 800
+
+## Scoring
+
+Articles are scored based off of 7 factors and their respective weighting: <br>
+1. Evidence Quality:     (22%)
+2. Verifiability:        (18%)
+3. Factual Language:     (15%)
+4. Logical Consistency:  (15%)
+5. Context and Framing:  (15%)
+6. Balance:              (10%)
+7. Source Reputation:    (5%)
+
+
+
+
     
 ## A General Note
 If you plan to use the information the app gives you in any academic or journalistic setting, please read the article as well and make your own inferences. I am not liable for any false information given by the scorer.
